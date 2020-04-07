@@ -1,0 +1,30 @@
+
+
+Todo formulário, especialmente cadastros de models, vão ter 2 rotas!
+
+Clicar no botao/linl ' Cadastrar novo fornecedor ' => intenção de criar um novo objeto/dado no banco de dados
+
+GET em uma URL  -> Resposta produz um formulário para você preencher
+
+
+<form action="/novo_fabricante" method="POST">
+    <input type="hidden" value="910283923829013820" name="CSRFToken"/>
+
+    <label for="cpf">CPF</label>
+    <input type="text" name="cpf" id="cpf"/>
+    
+    <label>Idade</label>
+    <input type="number" name="idade"/>
+    
+    
+    <input type="submit">
+</form>
+
+------------------------------
+
+Quando eu envio o formulário, gera uma nova requisicao HTTP
+
+POST/PATCH em outra URL (geralmente) -> parametros adicionais 
+
+name: 'Hyundai' 
+
