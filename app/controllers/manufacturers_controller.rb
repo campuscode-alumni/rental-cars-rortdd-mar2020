@@ -19,13 +19,10 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.new
     @manufacturer.name = name
 
-    if @manufacturer.save
+    if @manufacturer.save # executa o método valid? 
       redirect_to @manufacturer
     else
       render 'new'
     end
-  end
-
-  def update
   end
 end

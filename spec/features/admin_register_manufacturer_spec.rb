@@ -37,6 +37,7 @@ feature 'Admin register manufacturer' do
     fill_in 'Nome', with: 'Fiat'
     click_on 'Enviar'
 
+    expect(Manufacturer.count).to eq 1
     expect(page).to have_content('Nome deve ser único')
   end
 end
