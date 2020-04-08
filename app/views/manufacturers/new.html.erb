@@ -1,18 +1,3 @@
 <h1>Novo Fabricante</h1>
 
-<% if @manufacturer.errors.full_messages.any? %>
-  <p>Não foi possível salvar, verifique os erros abaixo:</p>
-  <ul>
-  <% @manufacturer.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= form_for(@manufacturer) do |f| %>
-
-    <%= f.label(:name, 'Nome') %>
-    <%= f.text_field(:name) %>
-
-    <%= f.submit('Enviar') %>
-<% end %>
+<%= render 'form' %>

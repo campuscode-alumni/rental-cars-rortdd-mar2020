@@ -1,0 +1,14 @@
+<% if @manufacturer.errors.full_messages.any? %>
+  <p>Não foi possível salvar, verifique os erros abaixo:</p>
+  <ul>
+  <% @manufacturer.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @manufacturer) do |f| %>
+    <%= f.label(:name, 'Nome') %>
+    <%= f.text_field(:name) %>
+    <%= f.submit('Enviar') %>
+<% end %>
