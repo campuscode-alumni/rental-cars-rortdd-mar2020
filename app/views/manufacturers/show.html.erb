@@ -1,4 +1,17 @@
 <%= @manufacturer.name %>
 
 <%= link_to 'Editar', edit_manufacturer_path(@manufacturer.id) %>
+
+<%= link_to('Apagar fabricante', manufacturer_path(@manufacturer.id), method: :delete) %>
+
 <%= link_to 'Voltar', manufacturers_path %>
+
+
+
+GET /manufacturers/1 -> show()
+
+DELETE /manufacturers/1 -> destroy()
+
+
+form_for/form_with é sempre um POST por padrao
+link_to é sempre um GET por padrão
