@@ -1,5 +1,9 @@
 class CarCategoriesController < ApplicationController
 
+  def index
+    @car_categories = CarCategory.all
+  end
+
   def show
     @car_category = CarCategory.find(params[:id])
   end
@@ -14,8 +18,10 @@ class CarCategoriesController < ApplicationController
                                         :third_part_insurance)
     
     @car_category = CarCategory.new(car_category_params)
-    @car_category.save
-    
-    redirect_to @car_category
+    if @car_category.save
+      redirect_to @car_category
+    else
+      render 'new'
+    end
   end
 end
