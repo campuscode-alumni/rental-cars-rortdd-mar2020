@@ -2,4 +2,11 @@
 
 <h2>Bem vindo ao sistema de gestão de locação</h2>
 
+<h3><%= t('hello') %>
+<p><%= l Date.today %> </p>
+<p><%= number_to_currency 100 %> </p>
+
+
+
 <%= link_to 'Fabricantes', manufacturers_path %>
+<%= link_to 'Registrar nova categoria de carro', new_car_category_path %>
