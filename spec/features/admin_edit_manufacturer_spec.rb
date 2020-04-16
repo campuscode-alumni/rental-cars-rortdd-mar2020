@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Admin edits manufacturer' do
   scenario 'successfully' do
-    m = Manufacturer.create(name: 'Fiat')
+    m = Manufacturer.create!(name: 'Fiat')
 
     visit root_path
     click_on 'Fabricantes'

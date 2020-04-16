@@ -1,0 +1,18 @@
+<h1>Locações</h1>
+
+<% @rentals.each do |rental| %>
+  <div>
+    <p>
+      <strong>Data inicial:</strong> <%= l rental.start_date %>
+    </p>
+    <p>
+      <strong>Data final:</strong> <%= l rental.end_date %>
+    </p>
+    <p>
+      <strong>Cliente:</strong> <%= rental.client.name %>
+    </p>
+    <p>
+      <strong>Categoria:</strong> <%= rental.car_category.name %>
+    </p>
+  </div>
+<% end %>

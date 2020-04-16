@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_001914) do
+ActiveRecord::Schema.define(version: 2020_04_16_225756) do
 
   create_table "car_categories", force: :cascade do |t|
     t.string "name"
@@ -34,12 +34,33 @@ ActiveRecord::Schema.define(version: 2020_04_15_001914) do
     t.index ["manufacturer_id"], name: "index_car_models_on_manufacturer_id"
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "document"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "manufacturers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "client_id", null: false
+    t.integer "car_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_category_id"], name: "index_rentals_on_car_category_id"
+    t.index ["client_id"], name: "index_rentals_on_client_id"
+  end
+
   add_foreign_key "car_models", "car_categories"
   add_foreign_key "car_models", "manufacturers"
+  add_foreign_key "rentals", "car_categories"
+  add_foreign_key "rentals", "clients"
 end
