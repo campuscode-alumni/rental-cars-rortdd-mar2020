@@ -15,7 +15,7 @@ feature 'Admin view rentals' do
 
     expect(page).to have_content('16/04/2030')
     expect(page).to have_content('18/04/2030')
-    expect(page).to have_content('Fulano Sicrano')
+    expect(page).to have_content('Fulano Sicrano - 578.100.235-94')
     expect(page).to have_content(/A/)
   end
 

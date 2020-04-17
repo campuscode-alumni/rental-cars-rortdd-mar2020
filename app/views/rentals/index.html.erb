@@ -1,5 +1,7 @@
 <h1>Locações</h1>
 
+<%= link_to 'Registrar locação', new_rental_path %>
+
 <% @rentals.each do |rental| %>
   <div>
     <p>
@@ -9,7 +11,7 @@
       <strong>Data final:</strong> <%= l rental.end_date %>
     </p>
     <p>
-      <strong>Cliente:</strong> <%= rental.client.name %>
+      <strong>Cliente:</strong> <%= rental.client.identification %>
     </p>
     <p>
       <strong>Categoria:</strong> <%= rental.car_category.name %>
