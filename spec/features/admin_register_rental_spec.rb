@@ -22,4 +22,16 @@ feature 'Admin register rental' do
     expect(page).to have_content(client.identification)
     expect(page).to have_content(/A/)
   end
+
+  scenario 'and must fill all fields' do
+    visit root_path
+    click_on 'Locações'
+    click_on 'Registrar locação'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Data inicial não pode ficar em branco')
+    expect(page).to have_content('Data final não pode ficar em branco')
+    expect(page).to have_content('Cliente é obrigatório(a)')
+    expect(page).to have_content('Categoria é obrigatório(a)')
+  end
 end

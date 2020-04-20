@@ -10,8 +10,14 @@ class RentalsController < ApplicationController
   end
 
   def create
-    @rental = Rental.create(params.require(:rental).permit(:start_date, :end_date,
-                                                           :car_category_id, :client_id))
-    redirect_to rentals_path
+    @rental = Rental.new(params.require(:rental).permit(:start_date, :end_date,
+                                                        :car_category_id, :client_id))
+    if @rental.save
+      redirect_to rentals_path
+    else
+      @car_categories = CarCategory.all
+      @clients = Client.all
+      render :new
+    end
   end
 end

@@ -7,6 +7,9 @@ pt-BR:
       manufacturer:
         one: Fabricante
         other: Fabricantes
+      rental:
+        one: Locação
+        other: Locações
     attributes:
       car_category:
         name: "Nome"
@@ -15,3 +18,10 @@ pt-BR:
         third_part_insurance: "Seguro para terceiros"
       manufacturer:
         name: "Nome"
+      rental:
+        start_date: Data inicial
+        end_date: Data final
+        client: Cliente
+        client_id: Cliente
+        car_category: Categoria
+        car_category_id: Categoria
