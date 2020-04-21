@@ -5,7 +5,7 @@
 <% @rentals.each do |rental| %>
   <div>
     <p>
-      <strong>Data inicial:</strong> <%= l rental.start_date %>
+      <strong><%= Rental.human_attribute_name(:start_date) %>:</strong> <%= l rental.start_date %>
     </p>
     <p>
       <strong>Data final:</strong> <%= l rental.end_date %>
