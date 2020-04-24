@@ -1,9 +1,18 @@
 <h1>Locações</h1>
 
+<%= form_with url: search_rentals_path, local: true, method: :get do |f| %>
+  <%= f.label :q, 'Busca' %>
+  <%= f.search_field :q %>
+  <%= f.submit 'Pesquisar' %>
+<% end %>
+
 <%= link_to 'Registrar locação', new_rental_path %>
 
 <% @rentals.each do |rental| %>
   <div>
+    <p>
+      <strong>Código:</strong> <%= rental.code %>
+    </p>
     <p>
       <strong><%= Rental.human_attribute_name(:start_date) %>:</strong> <%= l rental.start_date %>
     </p>

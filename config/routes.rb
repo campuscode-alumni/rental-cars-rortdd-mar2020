@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :manufacturers
   resources :car_categories, only: %i[index new create show]
   resources :car_models, only: %i[index new create show]
-  resources :rentals, only: %i[index new create]
+  resources :rentals, only: %i[index new create] do
+    get 'search', on: :collection
+  end
 end
