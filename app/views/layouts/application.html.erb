@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Locações', rentals_path %>
+      <% else %>
+        <%= link_to 'Entrar', new_user_session_path %>
+      <% end %>
+      <%#= link_to 'Home', root_path %>
+      <%= link_to 'Fabricantes', manufacturers_path %>
+      <%= link_to 'Categorias de Carros', car_categories_path %>
+      <%= link_to 'Modelos de Carros', car_models_path %>
+    </nav>
+
+    <% if flash[:success] %>
+      <p><%= flash[:success] %></p>
+    <% end %>
+    <%= notice %>
+    <%= alert %>
     <%= yield %>
   </body>
 </html>
