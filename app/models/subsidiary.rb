@@ -10,7 +10,7 @@ class Subsidiary < ApplicationRecord
     unless cnpj.length == 14
       errors.add(:cnpj, 'deve ter 14 números')
     end
-    
+
     unless CNPJ.valid?(cnpj)
       errors.add(:cnpj, 'não é válido')
     end

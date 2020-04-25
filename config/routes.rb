@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
   resources :manufacturers
+  resources :customers, only: [:index, :new, :create, :show]
   resources :subsidiaries, only: [:index, :new, :create, :show]
   resources :car_categories, only: %i[index new create show]
   resources :car_models, only: %i[index new create show]

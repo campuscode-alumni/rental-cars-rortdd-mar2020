@@ -4,6 +4,9 @@ pt-BR:
       car_category: 
         one: "Categoria de Carro"
         other: "Categorias de Carros"
+      customer:
+        one: Cliente
+        other: Clientes
       manufacturer:
         one: Fabricante
         other: Fabricantes
@@ -22,6 +25,10 @@ pt-BR:
         daily_rate: "Diária"
         car_insurance: "Seguro"
         third_part_insurance: "Seguro para terceiros"
+      customer:
+        name: Nome
+        cpf: CPF
+        email: Email
       manufacturer:
         name: "Nome"
       rental:
