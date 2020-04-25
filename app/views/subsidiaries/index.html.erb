@@ -1,0 +1,23 @@
+<h1>Filiais</h1>
+<% if @subsidiaries.any? %>
+  <table id='filiais'>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @subsidiaries.each do |sub| %>
+      <tr>
+        <td><%= sub.name %></td>
+        <td><%= sub.address %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div>
+    <p>Nenhuma filial cadastrada</p>
+  </div>
+<% end %>
