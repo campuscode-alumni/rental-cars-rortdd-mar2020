@@ -46,6 +46,6 @@ feature 'Admin register subsidiary' do
 
      #Assert
      expect(page).to have_content('Não foi possível cadastrar a filial')
-     expect(page).to have_css('div#errors li', count: 3)
+     expect(page).to have_css('div#errors li', count: 5)
   end
 end
