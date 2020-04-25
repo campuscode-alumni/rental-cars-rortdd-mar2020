@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_235136) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_manufacturers_on_user_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -76,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_235136) do
 
   add_foreign_key "car_models", "car_categories"
   add_foreign_key "car_models", "manufacturers"
-  add_foreign_key "manufacturers", "users"
   add_foreign_key "rentals", "car_categories"
   add_foreign_key "rentals", "clients"
 end
