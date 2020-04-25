@@ -10,6 +10,9 @@ pt-BR:
       rental:
         one: Locação
         other: Locações
+      subsidiary:
+        one: Filial
+        other: Filiais
       user:
         one: Usuário
         other: Usuários
@@ -28,5 +31,9 @@ pt-BR:
         client_id: Cliente
         car_category: Categoria
         car_category_id: Categoria
+      subsidiary:
+        name: Nome
+        address: Endereço
+        cnpj: CNPJ
       user:
         password: Senha
