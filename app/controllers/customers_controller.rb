@@ -20,4 +20,10 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
   end
+
+  def search
+    @search_query = params[:query]
+    @customers = Customer.where("name LIKE ?", "%#{@search_query}%")
+                         .or(Customer.where(cpf: @search_query))
+  end
 end

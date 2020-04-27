@@ -1,2 +1,8 @@
 <h1>Clientes</h1>
 <%= link_to 'Cadastrar Novo Cliente', new_customer_path %>
+
+<%= form_tag(search_customers_path, method: :get) do %>
+  <%= label_tag :query, 'Busca' %>
+  <%= text_field_tag :query %>
+  <%= submit_tag 'Buscar' %>
+<% end %>

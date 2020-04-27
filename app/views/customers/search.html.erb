@@ -1,0 +1,7 @@
+<h1>Resultado da Busca</h1>
+<h3>Resultado da busca por: <%= @search_query %></h3>
+<p><%= @customers.count%> clientes encontrados
+<% @customers.each do |cust| %>
+  <%= cust.name %>
+  <%= cust.email %>
+<% end %>
