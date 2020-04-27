@@ -7,6 +7,9 @@ class Customer < ApplicationRecord
     CPF.new(self.cpf).formatted
   end
 
+  def identification
+    "#{name} - #{formatted_cpf}"
+  end
 
   def valid_cpf
     return if cpf.nil? # guard clause

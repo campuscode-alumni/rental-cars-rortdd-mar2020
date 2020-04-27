@@ -5,7 +5,7 @@ feature 'Admin register rental' do
     car_category = CarCategory.create!(name: 'A', daily_rate: 100,
                                        third_part_insurance: 100,
                                        car_insurance: 100)
-    client = Client.create!(name: 'Fulano Sicrano', document: '578.100.235-94',
+    customer = Customer.create!(name: 'Fulano Sicrano', cpf: '57810023594',
                             email: 'teste@teste.com.br')
     user = User.create!(email: 'test@test.com', password: '12345678')
 
@@ -24,7 +24,7 @@ feature 'Admin register rental' do
 
     expect(page).to have_content('16/04/2030')
     expect(page).to have_content('18/04/2030')
-    expect(page).to have_content(client.identification)
+    expect(page).to have_content(customer.identification)
     expect(page).to have_content(/A/)
     expect(page).to have_content('Locação cadastrada com sucesso')
   end

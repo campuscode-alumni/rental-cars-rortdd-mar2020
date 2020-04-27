@@ -34,8 +34,8 @@ pt-BR:
       rental:
         start_date: Data inicial
         end_date: Data final
-        client: Cliente
-        client_id: Cliente
+        customer: Cliente
+        customer_id: Cliente
         car_category: Categoria
         car_category_id: Categoria
       subsidiary:
