@@ -1,0 +1,10 @@
+<dl>
+  <dt>Código</dt>
+  <dd><%= @rental.code %>
+  <dt>Categoria</dt>
+  <dd><%= @rental.car_category.name %></dd>
+  <dt>Status</dt>
+  <dd><%= I18n.translate @rental.status %>
+  <dt>Cliente</dt>
+  <dd><%= @rental.customer.name %>
+</dl>

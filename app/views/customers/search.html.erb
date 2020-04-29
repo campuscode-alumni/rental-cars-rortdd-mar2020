@@ -2,6 +2,6 @@
 <h3>Resultado da busca por: <%= @search_query %></h3>
 <p><%= @customers.count%> clientes encontrados
 <% @customers.each do |cust| %>
-  <%= cust.name %>
+  <%= link_to cust.name, customer_path(cust) %>
   <%= cust.email %>
 <% end %>

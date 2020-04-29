@@ -5,3 +5,17 @@
   <dt>CPF:</dt>
   <dd><%= @customer.formatted_cpf %></dd>
 </dl>
+<section>
+  <h1>Agendamentos</h1>
+  <% @customer.rentals.each do |rental| %>
+    <div>
+      <dl>
+        <dt>Código</dt>
+        <dd><%= rental.code %>
+        <dt>Categoria</dt>
+        <dd><%= rental.car_category.name %></dd>
+      </dl>
+      <%= link_to 'Iniciar Locação', start_rental_path(rental.id) %>
+    </div>
+  <% end %>
+</section>

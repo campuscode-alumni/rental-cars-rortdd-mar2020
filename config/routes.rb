@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :subsidiaries, only: [:index, :new, :create, :show]
   resources :car_categories, only: %i[index new create show]
   resources :car_models, only: %i[index new create show]
-  resources :rentals, only: %i[index new create] do
+  resources :rentals, only: %i[index new create show] do
     get 'search', on: :collection
+    get 'start', on: :member
+    post 'start', on: :member, to: 'rentals#confirm'
   end
+
+
 end

@@ -1,4 +1,6 @@
 pt-BR:
+  scheduled: 'Agendada'
+  ongoing: 'Iniciada'
   activerecord:
     models:
       car_category: 

@@ -2,6 +2,7 @@ class Customer < ApplicationRecord
   validates :name, :cpf, :email, presence: true
   validates :cpf, :email, uniqueness: true
   validate :valid_cpf
+  has_many :rentals
 
   def formatted_cpf
     CPF.new(self.cpf).formatted

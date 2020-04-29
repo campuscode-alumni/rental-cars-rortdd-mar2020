@@ -1,0 +1,12 @@
+<h1>Confirmar Início de Locação</h1>
+<dl>
+  <dt>Código</dt>
+  <dd><%= @rental.code %>
+  <dt>Categoria</dt>
+  <dd><%= @rental.car_category.name %></dd>
+</dl>
+<%= form_tag(start_rental_path) do |f| %>
+  <%= label_tag :car_id, 'Carro'%>
+  <%= select_tag :car_id, options_from_collection_for_select(@available_cars, :id, :description) %>
+  <%= submit_tag 'Confirmar'%>
+<% end %>
