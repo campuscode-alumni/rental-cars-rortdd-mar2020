@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :start, :confirm]
 
   def index
     @rentals = Rental.all
@@ -40,12 +40,22 @@ class RentalsController < ApplicationController
 
   def confirm
     @rental = Rental.find(params[:id])
-
-    #@rental.update(status: :ongoing)
-    @rental.ongoing!
-
     @car = Car.find(params[:car_id])
-    # aqui a magia vai acontecer
+    @user = current_user
+
+    ActiveRecord::Base.transaction do
+      begin
+        @rental.ongoing!
+        @car.rented!
+        CarRental.create!(rental: @rental, car: @car, start_date: Time.zone.now,
+                        user: @user, daily_rate: @rental.car_category.daily_rate,
+                        car_insurance: @rental.car_category.car_insurance,
+                        third_part_insurance: @rental.car_category.third_part_insurance)
+       
+      rescue
+        logger.error "#{@rental.code} - Não foi possível iniciar a locação"
+      end
+    end
     redirect_to @rental
   end
 

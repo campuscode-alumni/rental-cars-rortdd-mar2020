@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_231429) do
+ActiveRecord::Schema.define(version: 2020_04_30_234159) do
 
   create_table "car_categories", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 2020_04_28_231429) do
     t.index ["manufacturer_id"], name: "index_car_models_on_manufacturer_id"
   end
 
+  create_table "car_rentals", force: :cascade do |t|
+    t.integer "rental_id", null: false
+    t.integer "car_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "start_date"
+    t.decimal "daily_rate"
+    t.decimal "car_insurance"
+    t.decimal "third_part_insurance"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_car_rentals_on_car_id"
+    t.index ["rental_id"], name: "index_car_rentals_on_rental_id"
+    t.index ["user_id"], name: "index_car_rentals_on_user_id"
+  end
+
   create_table "cars", force: :cascade do |t|
     t.integer "car_model_id", null: false
     t.string "license_plate"
@@ -41,13 +56,11 @@ ActiveRecord::Schema.define(version: 2020_04_28_231429) do
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["car_model_id"], name: "index_cars_on_car_model_id"
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "document"
-    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,6 +114,9 @@ ActiveRecord::Schema.define(version: 2020_04_28_231429) do
 
   add_foreign_key "car_models", "car_categories"
   add_foreign_key "car_models", "manufacturers"
+  add_foreign_key "car_rentals", "cars"
+  add_foreign_key "car_rentals", "rentals"
+  add_foreign_key "car_rentals", "users"
   add_foreign_key "cars", "car_models"
   add_foreign_key "rentals", "car_categories"
   add_foreign_key "rentals", "customers"
