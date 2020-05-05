@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :car_categories, only: %i[index new create show]
   resources :car_models, only: %i[index new create show]
   resources :rentals, only: %i[index new create show] do
+    resources :car_rentals, only: [:create]
     get 'search', on: :collection
     get 'start', on: :member
     # post 'start', on: :member, to: 'rentals#confirm' -> trocamos pelo CarRentals#create
   end
-  resources :car_rentals, only: [:create]
 end

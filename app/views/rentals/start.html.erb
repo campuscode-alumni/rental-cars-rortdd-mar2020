@@ -5,11 +5,15 @@
   <dt>Categoria</dt>
   <dd><%= @rental.car_category.name %></dd>
 </dl>
-<%= form_with(model: @car_rental, local: true) do |f|%>
-  <%= f.hidden_field :rental_id, value: @rental.id %>
+<%= form_with(model: [@rental, @car_rental], local: true) do |f|%>
   <%= f.label :car_id %>
   <%= f.collection_select :car_id, @available_cars, :id, :description %>
   <%= f.collection_check_boxes :add_on_ids, @add_ons, :id, :name %>
   <%= f.submit 'Confirmar' %>
 <% end %>
 
+ANTES 
+
+POST /rentals/:id/start  => rota customizada
+
+POST /rentals/:id/car_rentals => resources de car_rentals:create 
