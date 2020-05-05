@@ -33,30 +33,11 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
     car_models = @rental.car_category.car_models
     @available_cars = Car.where(car_model: car_models)
+    @add_ons = AddOn.all
+    @car_rental = CarRental.new(rental: @rental)
     # No banco de dados, são procurados todos os carros que o modelo esteja no
     # array de modelos da categoria
     #SELECT * FROM cars WHERE car_model_id IN 1,2,5,10
-  end
-
-  def confirm
-    @rental = Rental.find(params[:id])
-    @car = Car.find(params[:car_id])
-    @user = current_user
-
-    ActiveRecord::Base.transaction do
-      begin
-        @rental.ongoing!
-        @car.rented!
-        CarRental.create!(rental: @rental, car: @car, start_date: Time.zone.now,
-                        user: @user, daily_rate: @rental.car_category.daily_rate,
-                        car_insurance: @rental.car_category.car_insurance,
-                        third_part_insurance: @rental.car_category.third_part_insurance)
-       
-      rescue
-        logger.error "#{@rental.code} - Não foi possível iniciar a locação"
-      end
-    end
-    redirect_to @rental
   end
 
   def show

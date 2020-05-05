@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   resources :rentals, only: %i[index new create show] do
     get 'search', on: :collection
     get 'start', on: :member
-    post 'start', on: :member, to: 'rentals#confirm'
+    # post 'start', on: :member, to: 'rentals#confirm' -> trocamos pelo CarRentals#create
   end
-
-
+  resources :car_rentals, only: [:create]
 end
