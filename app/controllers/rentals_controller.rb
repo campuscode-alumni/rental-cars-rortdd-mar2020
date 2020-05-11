@@ -16,6 +16,7 @@ class RentalsController < ApplicationController
                                                         :car_category_id, :customer_id))
     if @rental.save
       flash[:success] = 'Locação cadastrada com sucesso'
+      RentalMailer.rental_scheduled(@rental.id).deliver_now
       redirect_to rentals_path
     else
       @car_categories = CarCategory.all
