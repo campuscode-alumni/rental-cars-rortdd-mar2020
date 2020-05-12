@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :car do
     car_model
-    license_plate { 'ABC-1234' }
-    mileage { 1000 }
+    license_plate { Faker::Vehicle.license_plate }
+    mileage { Faker::Vehicle.mileage }
     color { 'Azul' }
   end
 end

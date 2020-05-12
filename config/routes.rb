@@ -14,4 +14,10 @@ Rails.application.routes.draw do
     get 'start', on: :member
     # post 'start', on: :member, to: 'rentals#confirm' -> trocamos pelo CarRentals#create
   end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :cars, only: %i[index]
+    end
+  end
 end
