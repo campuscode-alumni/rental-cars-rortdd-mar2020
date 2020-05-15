@@ -21,6 +21,7 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+      car: Carro
     attributes:
       car_category:
         name: "Nome"
@@ -49,3 +50,6 @@ pt-BR:
       car_rental:
         car_id: Carro
         car: Carro
+      car:
+        car_model: Modelo de Carro
+        car_model_id: Modelo de Carro

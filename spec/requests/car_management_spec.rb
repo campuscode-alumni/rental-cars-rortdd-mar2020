@@ -31,4 +31,71 @@ describe 'car management' do
       expect(response_json).to be_blank
     end
   end
+
+  context 'GET /car/:id' do
+    context 'record exists' do
+      let(:car) { create(:car) }
+
+      before { get api_v1_car_path(car.id) }
+
+      it 'return status code' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'return status car' do
+        response_json = JSON.parse(response.body, symbolize_names: true)
+        expect(response_json[:id]).to eq(car.id)
+        expect(response_json[:license_plate]).to eq(car.license_plate)
+        expect(response_json[:color]).to eq(car.color)
+      end
+    end
+
+    context 'when record not exist' do
+      before { get api_v1_car_path(id: 000) }
+
+      it 'return status code 404' do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it 'return not found message' do
+        expect(response.body).to include('Carro não encontrado')
+      end
+    end
+  end
+
+  context 'POST /cars' do
+    context 'with valid parameters' do
+      let(:car_model) { create(:car_model) }
+      let(:attributes) { attributes_for(:car, car_model_id: car_model.id) }
+
+      before { post api_v1_cars_path, params: { car: attributes } }
+
+      it 'returns 201 status' do
+        expect(response).to have_http_status(:created)
+      end
+
+      it 'creates a car' do
+        car = JSON.parse(response.body, symbolize_names: true)
+        expect(car[:license_plate]).to eq(attributes[:license_plate])
+        expect(car[:color]).to eq(attributes[:color])
+        expect(car[:car_model_id]).to eq(attributes[:car_model_id])
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'returns validation messages' do
+        post api_v1_cars_path, params: { car: { foo: 'bar' } }
+
+        expect(response).to have_http_status(422)
+        expect(response.body).to include('Modelo de Carro é obrigatório(a)')
+      end
+
+      it 'returns validation messages' do
+        post api_v1_cars_path, params: {}
+
+        expect(response).to have_http_status(412)
+        expect(response.body).to include('Parâmetros inválidos')
+      end
+    end
+  end
 end

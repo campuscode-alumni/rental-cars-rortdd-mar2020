@@ -7,4 +7,8 @@ class Car < ApplicationRecord
     "#{car_model.manufacturer.name} #{car_model.name} - Placa: #{license_plate} - Cor: #{color}"
   end
 
+  # def as_json(options = {})
+  #   super(options.merge(except: %i[created_at update_at car_model_id],
+  #                       include: { car_model: { only: [:id, :name] } }))
+  # end
 end
